@@ -26,10 +26,10 @@
   the end that is the begining of the arrows (data connection)--->
   
   If you have a 4-pin connection:
-  Blue = 5V
-  Red = SDI
-  Green = CKI
-  Black = GND
+  red = 5V
+  yelliow = SDI
+  green = CKI
+  blue = GND
   
   If you have a split 5-pin connection:
   2-pin Red+Black = 5V/GND
@@ -37,7 +37,7 @@
   Red = SDI
  */
 
-int SDI = 2; //Red wire (not the red 5V wire!)
+int SDI = 2; //yellow wire
 int CKI = 3; //Green wire
 int ledPin = 13; //On board LED
 
@@ -69,19 +69,6 @@ void setAll( int value )
 
 void loop() {
   setAll(0x0019C1);
-  //Pre-fill the color array with known values
-
-  //strip_colors[0] = 0xFF0000;//blue
-  //strip_colors[1] = 0x00FF00;//green 
-  //strip_colors[2] = 0x0000FF;//red
-  //strip_colors[3] = 0xFFFFFF;
-  //strip_colors[0] = 0x0066FF; 
-  //strip_colors[1] = 0x0054FF; 
-  //strip_colors[6] = 0x00FF00;
-  //strip_colors[7] = 0xFF0000; 
-  //strip_colors[8] = 0x0000FF; //Bright red
-  //strip_colors[9] = 0x0000; //Faint red
-  //strip_colors[10] = 0x800000; //1/2 red (0x80 = 128 out of 256)
   post_frame(); //Push the current color frame to the strip
   
   delay(20000);
