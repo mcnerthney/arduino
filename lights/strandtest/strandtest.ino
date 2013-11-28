@@ -53,12 +53,35 @@ uint32_t green = Color(0, 255, 0);
 uint32_t orange = Color(0x00, 0x19, 0xC1);
 uint32_t black = 0;
 uint32_t white = Color(255,255,255);
+uint32_t red = Color(0,0,255);
+uint32_t yellow = Color(0,255,255);
 
-int STATE_PUMPKIN_RUN = 1;
+int STATE_PUMPKIN_RUN  = 1;
 int STATE_PUMPKIN_STOP = 2;
 int STATE_FLASHING = 3;
 int STATE_WHITE = 4;
-int state = STATE_FLASHING;
+int STATE_GRADE = 5;
+int state = STATE_GRADE;
+
+
+void showGrades() {
+       loadColor(black);
+      //strip.show();
+      
+      strip.setPixelColor(0, yellow);
+      strip.setPixelColor(1, yellow);
+      strip.setPixelColor(2, yellow);
+      strip.setPixelColor(3, yellow);
+ 
+ 
+ 
+     strip.setPixelColor(29, red);
+     strip.setPixelColor(30, green);
+     strip.setPixelColor(31, yellow);
+     // strip.setPixelColor(4, green);
+                
+      strip.show();
+}
 
 void setup() {
     
@@ -136,7 +159,7 @@ void loop() {
   
     if ( state == STATE_FLASHING ) {
       runScaryFlash();
-      state = STATE_PUMPKIN_RUN;
+      state = STATE_GRADE;
     }
     if ( state == STATE_PUMPKIN_RUN ) {
        runGreen();
@@ -163,6 +186,11 @@ void loop() {
       strip.show();
 
        delay(500);
+    }
+   if ( state == STATE_GRADE ) {
+     
+     showGrades();
+ 
     }
 
     
